@@ -54,41 +54,14 @@ LList::LList(const LList& copyList)
     }
 }
 
-/*LList& LList::operator=(const LList& copyList)
-{
-    if (this == &copyList) {
-        return *this;
-    }
-    LList bufList(copyList);
-    this->_size = bufList._size;
-    this->_head = bufList._head;
-
-    return *this;
-}*/
-
-/*LList::LList(LList&& moveList) noexcept
+LList::LList(LList&& moveList) noexcept
 {
     this->_size = moveList._size;
     this->_head = moveList._head;
 
     moveList._size = 0;
     moveList._head = nullptr;
-}*/
-
-/*LList& LList::operator=(LList&& moveList) noexcept
-{
-    if (this == &moveList) {
-        return *this;
-    }
-    forceNodeDelete(_head);
-    this->_size = moveList._size;
-    this->_head = moveList._head;
-
-    moveList._size = 0;
-moveList._head = nullptr;
-
-return *this;
-}*/
+}
 
 LList::~LList()
 {
@@ -144,12 +117,6 @@ void LList::insert_at(size_t idx, int val)
     }
 }
 
-/*void LList::insertAfterNode(Node* node, const ValueType& value)
-{
-    node->insertNext(value);
-    ++_size;
-}*/
-
 void LList::push_back(int val)
 {
     if (_size == 0) {
@@ -192,36 +159,7 @@ void LList::erase_at(size_t idx)
     }
 
 }
-/*void LList::removeNode(Node* node)
-{
-    int index = findIndex(node->value);
 
-    if(index == -1)
-    {
-        assert(index == -1);
-    }
-
-    else if (index == 0) {
-        pop_front();
-    }
-    else if(index == _size - 1)
-    {
-        pop_back();
-    }
-    else {
-
-
-        erase_at(index);
-        --_size;
-    }
-
-}*/
-
-/*void LList::removeNextNode(Node* node)
-{
-    int index = findIndex(node->value);
-    remove(index + 1);
-}*/
 void LList::pop_back()
 {
 
@@ -239,27 +177,6 @@ void LList::pop_front()
     --_size;
 }
 
-/*long long int LList::findIndex(const ValueType& value) const
-{
-    Node *node = this->_head;
-
-    for(int i = 0; i < _size; ++i)
-    {
-        if(node->value == value){
-            return i;
-        }
-        node = node->next;
-    }
-    return -1;
-}*/
-
-/*LList::Node* LList::findNode(const ValueType& value) const
-{
-    int index = findIndex(value);
-    assert(index != -1);
-    return getNode(index);
-}*/
-
 void LList::reverse() {
     int index = _size - 1;
     long double n;
@@ -270,20 +187,6 @@ void LList::reverse() {
     }
 }
 
-
-/*LList LList::reverse()
-{
-    LList buf(*this);
-    buf.reverse();
-    return buf;
-}*/
-
-/*LList LList::getReverseList() const
-{
-    LList  buf(*this);
-    buf.reverse();
-    return buf;
-}*/
 
 size_t LList::size() const
 {
