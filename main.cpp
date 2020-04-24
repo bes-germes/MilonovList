@@ -1,5 +1,5 @@
 #include "llist.h"
-
+#include "llist.cpp"
 #include <iostream>
 
 
@@ -13,20 +13,15 @@ void dump(const LList& l)
 int main()
 {
     LList l;
-    l.push_back(1);
-    l.push_front(0);
-    l.push_back(2);
-
-    cout << "Stage 1: "; dump(l); cout << endl;
-
-    l.insert_at(1, 10);
-    cout << "Stage 2: "; dump(l); cout << endl;
-
-    l.erase_at(1);
-    cout << "Stage 2: "; dump(l); cout << endl;
-
-    l.reverse();
-    cout << "Stage 3: "; dump(l); cout << endl;
-
+    for (int i = 0; i < 100000; ++i) {
+        l.push_back(1);
+    }
+    //cout << "l is full" << endl;
+    //LList l1(l);//Было 4.688
+    //cout << "l1 is full" << endl;
+    LList l2(move(l));//После move стало 2.344
+    //cout << "l2 is full" << endl;
+    //cout << "l1 size is: " << l1.size() << endl;
+    //cout << "l2 size is: " << l2.size() << endl;
     return 0;
 }
